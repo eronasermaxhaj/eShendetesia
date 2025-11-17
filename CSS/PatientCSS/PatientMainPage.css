@@ -1,0 +1,108 @@
+/* Reset some default margins/paddings */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: #0dc3f5; /* blue */
+    color: white;
+}
+
+.main-nav .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.main-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.main-links a:hover {
+    color: #097e9e; /* hover color */
+}
+
+/* Hero Section */
+.hero {
+    padding: 80px 20px;
+    text-align: center;
+/*   background-image: url('/IMG/qkuk.jpg'); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    position: relative;
+    
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.hero button {
+    padding: 12px 25px;
+    font-size: 16px;
+    background-color: #3084c0;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.hero button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Health Tips Section */
+.health-tips {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 50px 40px;
+    background-color: #f7f7f7;
+}
+
+.tip-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.tip-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+/* Footer */
+footer {
+    background-color: #0d6efd;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+}
