@@ -8,6 +8,3 @@ eShendetesia is a web application to manage medical appointments in Kosovo. User
 - Schedule appointments
 - Responsive design
 
-## How to Run
-1. Clone the repository
-2. Open HTML files in a browser
