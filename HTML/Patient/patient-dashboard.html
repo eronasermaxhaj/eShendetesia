@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--
+    ======================================================
+    TO BE DONE (PATIENT MAIN PAGE):
+    
+    1. "Cakto Terminin Tani" button:
+       - Redirect patient to appointment scheduling page
+       - Load available services (MRI, X-Ray, Consultation, etc.)
+    
+    2. Navigation links:
+       - Informata:
+         • Display informational content (about platform, rights, usage)
+         • Can be modal, dropdown, or separate page
+       - Ndihmë:
+         • Show FAQ, contact info, or live help (simulated)
+    
+    3. Këshilla Shëndetësore cards:
+       - Make cards clickable
+       - Expand card or open modal with more detailed content
+       - Load extended text dynamically (static or simulated backend)
+    
+    4. Language selector:
+       - Implement language switching (ALB / ENG / SRB)
+       - Load translated content dynamically
+    
+    5. Backend integration (later):
+       - Personalize content based on logged-in patient
+       - Fetch tips and announcements from database (SIMULATED)
+    ======================================================
+    -->
+
+    <title>eShendetesia - Ballina</title>
+
+    <!-- Patient main page styling -->
+    <link rel="stylesheet" href="/CSS/Patient/patient-dashboard.css">
+
+    <!-- Icons for navigation and UI elements -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- 
+    Top navigation bar:
+    - Contains logo, main navigation links and language selector
+    -->
+    <nav class="main-nav">
+
+        <!-- Platform logo / branding -->
+        <div class="logo">eShendetesia</div>
+
+        <div class="nav-container">
+
+            <!-- Main navigation links -->
+            <div class="main-links">
+
+                <!-- 
+                TO BE DONE:
+                - Link to patient services overview page
+                -->
+                <a href="#"><i class="fas fa-stethoscopes"></i> Shërbimet</a>
+
+                <!-- 
+                TO BE DONE:
+                - Show informational content (modal or page)
+                -->
+                <a href="#"><i class="fas fa-info-circle"></i> Informata</a>
+
+                <!-- 
+                TO BE DONE:
+                - Show help / FAQ / support options
+                -->
+                <a href="#"><i class="fas fa-question-circle"></i> Ndihmë</a>
+            </div>
+
+            <!-- Language selection dropdown -->
+            <div class="language-picker">
+                <span>Gjuha:</span>
+
+                <!-- 
+                TO BE DONE:
+                - Add JS logic to change site language
+                -->
+                <select id="lang-select">
+                    <option value="alb">ALB</option>
+                    <option value="eng">ENG</option>
+                    <option value="srb">SRB</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main page content -->
+    <main class="main-content">
+
+        <!-- 
+        Hero section:
+        - Welcome message
+        - Primary call-to-action (appointment scheduling)
+        -->
+        <section class="hero">
+            <div class="hero-container">
+
+                <!-- Textual content -->
+                <div class="hero-text">
+
+                    <!-- Government identifier -->
+                    <div class="gov-badge">Republika e Kosovës</div>
+
+                    <h1>Mirësevini në eShendetesia</h1>
+
+                    <p>
+                        Platforma juaj qendrore për menaxhimin e shëndetit.
+                        Rezervoni terminin tuaj mjekësor me vetëm disa klikime,
+                        pa pritje në radhë.
+                    </p>
+
+                    <!-- 
+                    TO BE DONE:
+                    - Redirect to appointment scheduling page
+                    -->
+                    <button id="schedule-btn">Cakto Terminin Tani</button>
+                </div>
+
+                <!-- Decorative / informational image -->
+                <div class="hero-image">
+                    <div class="image-wrapper">
+                        <img 
+                            src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800" 
+                            alt="Mjekësia">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+        Health tips section:
+        - Displays educational cards
+        -->
+        <section class="tips-section">
+
+            <!-- Section title -->
+            <div class="section-header">
+                <h2>Këshilla Shëndetësore</h2>
+                <p>Informohuni për një jetë më të shëndetshme</p>
+            </div>
+
+            <!-- 
+            Slider/container holding tip cards
+            -->
+            <div class="tips-slider">
+
+                <!-- Individual health tip card -->
+                <div class="tip-card">
+
+                    <!-- Card image -->
+                    <div class="card-img" 
+                         style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=400')">
+                    </div>
+
+                    <!-- Card text content -->
+                    <div class="card-content">
+                        <h3>Ndihma e Shpejtë</h3>
+                        <p>Mësoni hapat bazë se si të veproni në raste emergjente.</p>
+
+                        <!-- 
+                        TO BE DONE:
+                        - Expand card or open modal with full article
+                        -->
+                        <a href="#" class="read-more">Lexo më shumë</a>
+                    </div>
+                </div>
+
+                <!-- Repeatable card structure -->
+                <div class="tip-card">
+                    <div class="card-img" 
+                         style="background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=400')">
+                    </div>
+                    <div class="card-content">
+                        <h3>Aktiviteti Fizik</h3>
+                        <p>Ecja ditore përmirëson shëndetin tuaj mendor dhe fizik.</p>
+                        <a href="#" class="read-more">Lexo më shumë</a>
+                    </div>
+                </div>
+
+                <div class="tip-card">
+                    <div class="card-img" 
+                         style="background-image: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=400')">
+                    </div>
+                    <div class="card-content">
+                        <h3>Ushqimi</h3>
+                        <p>Forconi imunitetin me ushqime të pasura me vitamina.</p>
+                        <a href="#" class="read-more">Lexo më shumë</a>
+                    </div>
+                </div>
+
+                <div class="tip-card">
+                    <div class="card-img" 
+                         style="background-image: url('https://images.unsplash.com/photo-1511174511562-5f7f185854c8?auto=format&fit=crop&q=80&w=400')">
+                    </div>
+                    <div class="card-content">
+                        <h3>Hidratimi</h3>
+                        <p>Uji është jetik për funksionimin e organizmit tuaj.</p>
+                        <a href="#" class="read-more">Lexo më shumë</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer section -->
+    <footer>
+
+        <!-- Upper footer with columns -->
+        <div class="footer-top">
+            <div class="footer-col">
+                <h3>eShendetesia</h3>
+                <p>Sistemi i Integruar i Informacionit Shëndetësor.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Linket</h4>
+
+                <!-- 
+                TO BE DONE:
+                - External informational links
+                -->
+                <a href="#">Ministria e Shëndetësisë</a>
+                <a href="#">QKUK</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <p>0800 12345 (Pa pagesë)</p>
+            </div>
+        </div>
+
+        <!-- Footer bottom copyright -->
+        <div class="footer-bottom">
+            &copy; 2025 Republika e Kosovës - Portali Zyrtar.
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+:root {
+    --nav-bg: #e2eef8;
+    --primary-blue: #05468c;
+    --dark-blue: #052950;
+    --bg-gray: #f7f9fa;
+    --border-color: #ddd;
+    --confirmed-green: #27ae60;
+    --danger-red: #c0392b;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-gray);
+    color: #333;
+}
+
+/* Navbar */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 8%;
+    background-color: var(--nav-bg);
+    border-bottom: 2px solid #cbdcf0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-nav .logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--dark-blue);
+}
+
+.main-links a {
+    text-decoration: none;
+    color: var(--dark-blue);
+    font-weight: 600;
+    margin-left: 25px;
+}
+
+.main-links a.active {
+    border-bottom: 2px solid var(--primary-blue);
+}
+
+/* Layout */
+.appointments-wrapper {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 5%;
+}
+
+.page-header {
+    margin-bottom: 40px;
+}
+
+.page-header h1 {
+    color: var(--dark-blue);
+}
+
+.section-title {
+    font-size: 20px;
+    color: var(--dark-blue);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+/* Appointment Card */
+.appointment-card {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    position: relative;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 4px 4px 0px var(--border-color);
+}
+
+.status-indicator {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    background: var(--confirmed-green);
+    color: white;
+    padding: 5px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 0 0 4px 4px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    align-items: center;
+}
+
+.info-group label {
+    display: block;
+    font-size: 13px;
+    color: #777;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.info-group p {
+    font-weight: 600;
+    color: var(--dark-blue);
+}
+
+.card-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.btn-secondary, .btn-danger {
+    padding: 10px 18px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-secondary {
+    border: 1px solid var(--primary-blue);
+    background: white;
+    color: var(--primary-blue);
+}
+
+.btn-danger {
+    border: 1px solid var(--danger-red);
+    background: white;
+    color: var(--danger-red);
+}
+
+.btn-secondary:hover { background: var(--primary-blue); color: white; }
+.btn-danger:hover { background: var(--danger-red); color: white; }
+
+/* History Table */
+.history-section {
+    margin-top: 50px;
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border: 1px solid var(--border-color);
+}
+
+.history-table th, .history-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.history-table th {
+    background: #f8f9fa;
+    color: var(--dark-blue);
+    font-weight: 700;
+}
+
+.badge.completed {
+    background: #ebf5ee;
+    color: var(--confirmed-green);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.download-link {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer {
+    margin-top: 60px;
+    padding: 30px;
+    text-align: center;
+    background: var(--dark-blue);
+    color: white;
+}

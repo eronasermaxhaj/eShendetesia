@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--
+    ======================================================
+    TO BE DONE (MY APPOINTMENTS PAGE):
+
+    1. Load patient appointments dynamically:
+       - Fetch upcoming appointments from database (SIMULATED)
+       - Fetch appointment history
+
+    2. Appointment status handling:
+       - Confirmed
+       - Cancelled
+       - Completed
+       - Rescheduled
+
+    3. Edit / Reschedule appointment:
+       - Redirect to appointment editing page
+       - Check availability again
+
+    4. Cancel appointment:
+       - Show confirmation dialog
+       - Update backend & free time slot
+
+    5. Medical history:
+       - Load visit history automatically
+       - Display department and doctor
+
+    6. Reports:
+       - Enable PDF report download (SIMULATED)
+       - Restrict access to patient's own records only
+
+    7. Authentication:
+       - Ensure only logged-in patient can view this page
+    ======================================================
+    -->
+
+    <title>Terminet e Mia - eShendetesia</title>
+
+    <!-- Page-specific styling -->
+    <link rel="stylesheet" href="/CSS/Patient/my-appointment.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- 
+    Main navigation bar for patient area
+    -->
+    <nav class="main-nav">
+
+        <!-- Platform logo -->
+        <div class="logo">eShendetesia</div>
+
+        <div class="nav-container">
+
+            <!-- Patient navigation links -->
+            <div class="main-links">
+
+                <!-- Go to patient main page -->
+                <a href="patient-dashboard.html">
+                    <i class="fas fa-home"></i> Ballina
+                </a>
+
+                <!-- Go to appointment scheduling -->
+                <a href="patient-appointment.html">
+                    <i class="fas fa-plus-circle"></i> Cakto Termin
+                </a>
+
+                <!-- Current page -->
+                <a href="#" class="active">
+                    <i class="fas fa-calendar-check"></i> Terminet e Mia
+                </a>
+
+                <!-- 
+                TO BE DONE:
+                - Patient profile page
+                -->
+                <a href="#">
+                    <i class="fas fa-user"></i> Profili
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content wrapper -->
+    <main class="appointments-wrapper">
+
+        <!-- Page header -->
+        <header class="page-header">
+            <h1>Menaxhimi i Termineve</h1>
+            <p>
+                Këtu mund të gjeni listën e termineve tuaja aktuale
+                dhe historikun mjekësor.
+            </p>
+        </header>
+
+        <!-- 
+        Upcoming appointments section
+        -->
+        <section class="appointment-section">
+
+            <!-- Section title -->
+            <h2 class="section-title">
+                <i class="fas fa-clock"></i> Terminet e Ardhshme
+            </h2>
+
+            <!-- 
+            Single appointment card
+            (TO BE GENERATED DYNAMICALLY)
+            -->
+            <div class="appointment-card">
+
+                <!-- Appointment status -->
+                <div class="status-indicator confirmed">
+                    I Konfirmuar
+                </div>
+
+                <!-- Appointment details layout -->
+                <div class="card-grid">
+
+                    <!-- Hospital and department -->
+                    <div class="info-group">
+                        <label>Institucioni</label>
+                        <p>QKUK - Prishtinë (Reparti i Kardiologjisë)</p>
+                    </div>
+
+                    <!-- Date and time -->
+                    <div class="info-group">
+                        <label>Data dhe Ora</label>
+                        <p>15 Mars 2024 - 09:15</p>
+                    </div>
+
+                    <!-- Assigned doctor -->
+                    <div class="info-group">
+                        <label>Mjeku</label>
+                        <p>Dr. Agim Krasniqi</p>
+                    </div>
+
+                    <!-- Appointment actions -->
+                    <div class="card-actions">
+
+                        <!-- 
+                        TO BE DONE:
+                        - Redirect to reschedule page
+                        -->
+                        <button class="btn-secondary">
+                            <i class="fas fa-edit"></i> Ndrysho
+                        </button>
+
+                        <!-- 
+                        TO BE DONE:
+                        - Cancel appointment
+                        - Show confirmation dialog
+                        -->
+                        <button class="btn-danger">
+                            <i class="fas fa-trash"></i> Anulo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+        Appointment history section
+        -->
+        <section class="appointment-section history-section">
+
+            <!-- Section title -->
+            <h2 class="section-title">
+                <i class="fas fa-history"></i> Historiku i Vizitave
+            </h2>
+
+            <!-- 
+            History table
+            (TO BE POPULATED DYNAMICALLY)
+            -->
+            <table class="history-table">
+
+                <!-- Table header -->
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Institucioni</th>
+                        <th>Reparti</th>
+                        <th>Statusi</th>
+                        <th>Raporti</th>
+                    </tr>
+                </thead>
+
+                <!-- Table body -->
+                <tbody>
+
+                    <!-- Example history row -->
+                    <tr>
+                        <td>10 Janar 2024</td>
+                        <td>Spitali i Gjilanit</td>
+                        <td>Ortopedi</td>
+                        <td>
+                            <span class="badge completed">E Përfunduar</span>
+                        </td>
+
+                        <!-- 
+                        TO BE DONE:
+                        - Enable PDF report download
+                        -->
+                        <td>
+                            <a href="#" class="download-link">
+                                <i class="fas fa-file-pdf"></i> Shkarko
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>05 Dhjetor 2023</td>
+                        <td>QKUK</td>
+                        <td>Pediatri</td>
+                        <td>
+                            <span class="badge completed">E Përfunduar</span>
+                        </td>
+                        <td>
+                            <a href="#" class="download-link">
+                                <i class="fas fa-file-pdf"></i> Shkarko
+                            </a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-bottom">
+            &copy; 2025 Republika e Kosovës - Sistemi i Integruar i Shëndetësisë
+        </div>
+    </footer>
+
+</body>
+</html>

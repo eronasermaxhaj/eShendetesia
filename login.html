@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 
+    ======================================================
+    TO BE DONE:
+    1. Implement login authentication logic (backend):
+       - Validate Personal ID + Password
+       - Check credentials against eKosova database (SIMULATED)
+    
+    2. Implement role-based authorization:
+       - Determine if user is:
+         a) Patient
+         b) Doctor
+         c) Medical Staff
+         d) Administrator (optional)
+    
+    3. Redirect user after login based on role:
+       - Patient  -> patient dashboard
+       - Doctor   -> doctor dashboard
+       - Staff    -> staff dashboard
+    
+    4. Implement "Forgot Password" functionality:
+       - Redirect to password recovery page
+       - Integrate with eKosova password recovery (SIMULATED)
+    
+    5. Implement integration with Ministry of Health database (SIMULATED):
+       - Fetch professional roles (doctor, staff)
+       - Validate employment status
+    
+    6. Add form submission handling (JS or backend API):
+       - Prevent default form behavior
+       - Send login data securely (POST request)
+    ======================================================
+    -->
+
+    <title>eShendetesia - Portali Qeveritar</title>
+
+    <!-- Main project styling -->
+    <link rel="stylesheet" href="login.css">
+
+    <!-- Font Awesome icons (used for password visibility toggle) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- 
+    Main container that holds:
+    - Information about the platform
+    - Login form
+    -->
+    <main class="main-content">
+
+        <!-- Informational section (left side) -->
+        <div class="info-section">
+            <!-- Government identification label -->
+            <div class="gov-tag">Republika e Kosovës - Portali Zyrtar</div>
+
+            <!-- Platform title -->
+            <h1>eShendetesia</h1>
+
+            <!-- Short description of the platform -->
+            <p>
+                Platforma zyrtare qeveritare për caktimin e terminëve mjekësore 
+                dhe menaxhimin e shëndetit tuaj digjital.
+            </p>
+        </div>
+
+        <!-- Login form container -->
+        <div class="login-container">
+            <div class="login-box">
+
+                <!-- 
+                TO BE DONE:
+                - Connect this form to backend login API
+                - Handle validation errors (wrong ID/password)
+                - Show feedback messages to user
+                -->
+                <form>
+
+                    <!-- Personal ID input -->
+                    <div class="input-group">
+                        <label for="username">Numri Personal (ID)</label>
+
+                        <!-- 
+                        ID must be exactly 10 digits
+                        Pattern ensures only numbers are allowed
+                        -->
+                        <input type="text" 
+                               id="username" 
+                               name="username"
+                               placeholder="1234567890"
+                               maxlength="10"
+                               pattern="\d{10}"
+                               required>
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="input-group">
+                        <label for="password">Fjalëkalimi</label>
+
+                        <!-- Wrapper used for password visibility toggle -->
+                        <div class="password-wrapper">
+                            <input type="password" 
+                                   id="password" 
+                                   placeholder="••••••••" 
+                                   required>
+
+                            <!-- Eye icon to show/hide password -->
+                            <i class="fas fa-eye" id="togglePassword"></i>
+                        </div>
+                    </div>
+
+                    <!-- 
+                    TO BE DONE:
+                    - On submit:
+                      • authenticate user
+                      • identify role
+                      • redirect accordingly
+                    -->
+                    <button type="submit" class="login-btn">Kyçu</button>
+
+                    <!-- Forgot password link -->
+                    <div class="form-footer">
+                        <!-- 
+                        TO BE DONE:
+                        - Link to password recovery flow
+                        - Integrate with eKosova recovery system (SIMULATED)
+                        -->
+                        <a href="#">Harruat fjalëkalimin?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer section -->
+    <footer>
+        <div class="footer-content">
+
+            <!-- Government authority info -->
+            <div class="footer-section">
+                <strong>Ministria e Shëndetësisë</strong>
+                <p>© 2025 Të gjitha të drejtat e rezervuara.</p>
+            </div>
+
+            <!-- Footer navigation links -->
+            <div class="footer-links">
+                <a href="#">Termat e Përdorimit</a> | 
+                <a href="#">Privatësia</a> | 
+                <a href="#">Ndihmë</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for UI behavior -->
+    <script>
+        // Select eye icon and password input
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+
+        // Toggle password visibility on icon click
+        togglePassword.addEventListener('click', function () {
+            const type = password.getAttribute('type') === 'password' 
+                ? 'text' 
+                : 'password';
+
+            password.setAttribute('type', type);
+
+            // Switch icon appearance
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        /*
+        TO BE DONE:
+        - Add form submit listener
+        - Send login data to backend
+        - Handle successful / failed login
+        */
+    </script>
+</body>
+</html>
