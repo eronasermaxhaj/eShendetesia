@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="sq">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Responsive Layout -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Menaxho Pacientët - eShendetesia</title>
+
+    <!-- Page-specific stylesheet -->
+    <link rel="stylesheet" href="../../css/Doctor/manage-patients.css">
+
+    <!-- Font Awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- 
+    Top Navigation Bar
+    - Displays Portal Branding.
+    - User Profile and Logout Action.
+    -->
+    <nav class="doctor-nav">
+        <div class="nav-left">
+            <div class="logo">
+                eShendetesia <span class="portal-tag">Portal i Mjekut</span>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <!-- Logged-in Doctor Identity -->
+            <span class="doctor-name">
+                <i class="fas fa-user-md"></i> Dr. Agim Krasniqi
+            </span>
+
+            <!-- Logout -->
+            <a href="#" class="logout-btn" onclick="AuthService.logout(); return false;">
+                <i class="fas fa-sign-out-alt"></i> Dil
+            </a>
+        </div>
+    </nav>
+
+    <main class="dashboard-container">
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">Menytë</div>
+
+            <!-- Dashboard Link -->
+            <a href="doctor-dashboard.html">
+                <i class="fas fa-file-medical"></i> Urdhëresë e Re
+            </a>
+
+            <!-- Appointments Link -->
+            <a href="doctor-dashboard.html">
+                <i class="fas fa-clipboard-list"></i> Terminet e Sotme
+            </a>
+
+            <!-- Archive Link (Active) -->
+            <a href="manage-patients.html" class="active">
+                <i class="fas fa-folder-open"></i> Arkiva e Vizitave
+            </a>
+
+            <!-- Settings -->
+            <a href="#">
+                <i class="fas fa-cog"></i> Konfigurimet
+            </a>
+        </aside>
+
+        <!-- Main Workspace -->
+        <section class="main-content">
+
+            <!-- Page Header -->
+            <header class="content-header">
+                <h1>Menaxhimi i Urdhëresave</h1>
+                <p>
+                    Kërkoni, modifikoni ose fshini të dhënat e pacientëve të regjistruar.
+                </p>
+            </header>
+
+            <!-- Search & Filter Controls -->
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+
+                    <!-- Search Input (Managed by JS) -->
+                    <input type="text" placeholder="Kërko sipas ID-së ose Mbiemrit...">
+                </div>
+
+                <!-- Advanced Filtering Action -->
+                <button class="filter-btn">
+                    <i class="fas fa-filter"></i> Filtro
+                </button>
+            </div>
+
+            <!-- Patient Management Table -->
+            <div class="table-card">
+                <table class="management-table">
+                    <caption
+                        style="caption-side: top; text-align: left; padding: 10px; color: #5a6c7d; font-weight: bold;">
+                        Lista e pacientëve të regjistruar dhe statusi i tyre
+                    </caption>
+                    <!-- Table Headers -->
+                    <thead>
+                        <tr>
+                            <th>ID Personale</th>
+                            <th>Pacienti</th>
+                            <th>Procedura</th>
+                            <th>Prioriteti</th>
+                            <th>Data e Regjistrimit</th>
+                            <th>Veprimet</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Table Body (Dynamic Content) -->
+                    <tbody id="archive-table-body">
+                        <!-- Populated by JS -->
+                        <tr>
+                            <td colspan="6" style="text-align: center;">Duke ngarkuar arkivën...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Republika e Kosovës - Sistemi i Integruar i Shëndetësisë (HIS)</p>
+    </footer>
+
+    <!-- Logic Scripts -->
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/manage-patients.js"></script>
+
+</body>
+
+</html>

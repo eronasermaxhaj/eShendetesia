@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="sq">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regjistrohu - eShendetesia</title>
+
+    <!-- Using the same style as login for consistency -->
+    <link rel="stylesheet" href="../../css/auth/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <main class="main-content">
+
+        <!-- Informational section -->
+        <div class="info-section">
+            <div class="gov-tag">Republika e Kosovës - Portali Zyrtar</div>
+            <h1>eShendetesia</h1>
+            <p>
+                Krijoni llogarinë tuaj për të pasur qasje në shërbimet elektronike shëndetësore.
+            </p>
+        </div>
+
+        <!-- Registration form container -->
+        <div class="login-container">
+            <div class="login-box">
+
+                <!-- Register Form -->
+                <form id="registerForm" action="#" method="POST">
+                    <h2>Regjistrohu</h2>
+
+                    <fieldset class="fieldset-reset">
+                        <legend class="legend-style">
+                            Të Dhënat Personale</legend>
+
+                        <!-- Emri -->
+                        <div class="input-group">
+                            <label for="name">Emri</label>
+                            <input type="text" id="name" placeholder="Emri" required>
+                        </div>
+
+                        <!-- Mbiemri -->
+                        <div class="input-group">
+                            <label for="surname">Mbiemri</label>
+                            <input type="text" id="surname" placeholder="Mbiemri" required>
+                        </div>
+
+                        <!-- Personal ID -->
+                        <div class="input-group">
+                            <label for="personalId">Numri Personal (ID)</label>
+                            <input type="text" id="personalId" placeholder="1234567890" maxlength="10" pattern="\d{10}"
+                                title="Saktësisht 10 numra" required>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="input-group">
+                            <label for="password">Fjalëkalimi</label>
+                            <div class="password-wrapper">
+                                <input type="password" id="password" placeholder="••••••••" required
+                                    pattern="(?=.*\d)(?=.*[!@#$%^&*]).{8,}"
+                                    title="Të paktën 8 karaktere, një numër dhe një simbol (!@#$%^&*)">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Role Selection -->
+                    <div class="input-group" style="text-align: center;">
+                        <label>Regjistrohu si:</label>
+                        <div class="role-selection role-selection-container">
+                            <label class="role-label">
+                                <input type="radio" name="role" value="patient" checked> Pacient
+                            </label>
+                            <label class="role-label">
+                                <input type="radio" name="role" value="doctor"> Mjek
+                            </label>
+                            <label class="role-label">
+                                <input type="radio" name="role" value="staff"> Staf
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="login-btn">Krijo Llogarinë</button>
+
+                    <div class="form-footer">
+                        <a href="login.html">Keni llogari? Kyçuni këtu.</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <strong>Ministria e Shëndetësisë & SHSKUK</strong>
+                <p>© 2025 Të gjitha të drejtat e rezervuara.</p>
+                <div class="footer-links-container">
+                    <a href="https://msh.rks-gov.net/" target="_blank" class="footer-link">MSH
+                        Web</a>
+                    <a href="https://shskuk.rks-gov.net/" target="_blank" class="footer-link"
+                        style="margin-right:0">SHSKUK Web</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Logic -->
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/register.js"></script>
+</body>
+
+</html>
