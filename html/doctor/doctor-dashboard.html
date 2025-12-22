@@ -1,1 +1,311 @@
+<!DOCTYPE html>
+<html lang="sq">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Paneli i Mjekut - eShendetesia</title>
+
+    <!-- Doctor dashboard styling -->
+    <link rel="stylesheet" href="../../css/Doctor/doctor-dashboard.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Auth Check -->
+    <script src="../../js/auth.js"></script>
+</head>
+
+<body>
+
+    <!-- 
+    Top Navigation Bar:
+    - Displays Portal Branding.
+    - User Profile (Doctor Name) and Logout Action.
+    -->
+    <nav class="doctor-nav">
+
+        <!-- Left side: logo and portal label -->
+        <div class="nav-left">
+            <div class="logo">
+                eShendetesia
+                <span class="portal-tag">Portal i Mjekut</span>
+            </div>
+        </div>
+
+        <!-- Right side: doctor info and logout -->
+        <div class="nav-right">
+            <span class="doctor-name" id="doctorNameDisplay">
+                <i class="fas fa-user-md"></i> Dr. [Duke u ngarkuar...]
+            </span>
+
+            <a href="#" class="logout-btn" id="logoutBtn" onclick="AuthService.logout(); return false;">
+                <i class="fas fa-sign-out-alt"></i> Dil
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Dashboard Layout -->
+    <main class="dashboard-container">
+
+        <!-- 
+        Sidebar Navigation:
+        - Provides access to core doctor functions:
+          - New Medical Order creation.
+          - Appointment Management.
+          - Patient History / Archive.
+          - Settings.
+        -->
+        <aside class="sidebar">
+
+            <div class="sidebar-header">Menytë</div>
+
+            <!-- New Order Link -->
+            <a href="#" class="active" id="nav-new-order">
+                <i class="fas fa-file-medical"></i> Urdhëresë e Re
+            </a>
+
+            <!-- Today's Appointments Link -->
+            <a href="#" id="nav-appointments">
+                <i class="fas fa-clipboard-list"></i> Terminet e Sotme
+            </a>
+
+            <!-- Archive Link - Leads to Manage Patients -->
+            <a href="manage-patients.html">
+                <i class="fas fa-folder-open"></i> Arkiva e Vizitave
+            </a>
+
+            <!-- Settings -->
+            <a href="#" id="nav-settings">
+                <i class="fas fa-cog"></i> Konfigurimet
+            </a>
+        </aside>
+
+        <!-- Main Workspace -->
+        <section class="main-content">
+
+            <!-- VIEW 1: NEW ORDER FORM -->
+            <div id="view-new-order">
+                <header class="content-header">
+                    <h1>Urdhëresë e Re Mjekësore</h1>
+                    <p>
+                        Plotësoni të dhënat për të autorizuar
+                        procedurat diagnostike në sistem.
+                    </p>
+                </header>
+
+                <!-- 
+                Medical Order Form
+                - Collects Patient ID, Clinical Status, and Requested Procedures.
+                -->
+                <form class="patient-form" id="medicalOrderForm">
+
+                    <!-- 1. Patient Identification -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-id-card"></i> 1. Identiteti i Pacientit
+                        </h3>
+
+                        <div class="form-grid">
+
+                            <!-- Personal ID -->
+                            <div class="input-group">
+                                <label>ID Personale</label>
+                                <input type="text" id="patientIdInput" placeholder="1234567890" maxlength="10" required>
+                            </div>
+
+                            <!-- Patient Name -->
+                            <div class="input-group">
+                                <label>Emri</label>
+                                <input type="text" id="patientNameInput" placeholder="Emri" required>
+                            </div>
+
+                            <!-- Patient Surname -->
+                            <div class="input-group">
+                                <label>Mbiemri</label>
+                                <input type="text" id="patientSurnameInput" placeholder="Mbiemri" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Clinical Status & Priority -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-notes-medical"></i> 2. Gjendja Klinike & Prioriteti
+                        </h3>
+
+                        <div class="form-grid">
+
+                            <!-- Priority Selection -->
+                            <div class="input-group">
+                                <label>Prioriteti i Rastit</label>
+
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="priority" value="low" checked> Rutinë
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="priority" value="medium"> Shpejtë
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="priority" value="high"> Urgjente (STAT)
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Known Allergies -->
+                            <div class="input-group">
+                                <label>Alergji të Njohura</label>
+                                <input type="text" placeholder="P.sh. Penicilinë, Jod" class="danger-input">
+                            </div>
+
+                            <!-- Referral Validity -->
+                            <div class="input-group">
+                                <label>Vlefshmëria e Udhëzimit</label>
+                                <select>
+                                    <option>15 Ditë</option>
+                                    <option selected>30 Ditë</option>
+                                    <option>60 Ditë</option>
+                                    <option>90 Ditë</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Diagnostics & Procedures -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-microscope"></i> 3. Diagnostika & Procedurat
+                        </h3>
+
+                        <div class="form-grid">
+
+                            <!-- Procedure Selection -->
+                            <div class="input-group full-width">
+                                <label>Zgjidhni Procedurën (Scroll Down)</label>
+
+                                <select id="procedure-select" size="5" class="scroll-select">
+                                    <option value="ct">CT Scan (Tomografi e Kompjuterizuar)</option>
+                                    <option value="xray">X-Ray (Rentgen)</option>
+                                    <option value="mri">MRI (Rezonancë Magnetike)</option>
+                                    <option value="ultra">Ultratingull (Eko)</option>
+                                    <option value="blood">Analiza Laboratorike</option>
+                                    <option value="ecg">EKG (Elektrokardiogramë)</option>
+                                    <option value="mammogram">Mamografi</option>
+                                    <option value="biopsy">Biopsi</option>
+                                </select>
+                            </div>
+
+                            <!-- ICD-10 Diagnosis -->
+                            <div class="input-group full-width">
+                                <label>Diagnoza (Kodi ICD-10)</label>
+
+                                <!-- Autocomplete Datalist -->
+                                <input type="text" list="icd-codes" placeholder="Kërko diagnozën (p.sh. I10, E11...)">
+
+                                <datalist id="icd-codes">
+                                    <option value="I10">Hipertension Esencial</option>
+                                    <option value="E11">Diabet Mellitus Tip 2</option>
+                                    <option value="J06">Infeksion Akut i Rrugëve të Sipërme</option>
+                                    <option value="M54">Dimbje Shpine (Dorsalgia)</option>
+                                    <option value="R05">Kollë</option>
+                                </datalist>
+                            </div>
+
+                            <!-- Comments / Instructions -->
+                            <div class="input-group full-width">
+                                <label>Komentet / Udhëzime Specifike</label>
+                                <textarea placeholder="Shënoni komentet e nevojshme për stafin ekzaminues..." rows="4">
+                            </textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="form-actions">
+                        <button type="submit" class="save-btn">
+                            <i class="fas fa-save"></i> Ruaj në Databazë
+                        </button>
+
+                        <button type="reset" class="clear-btn">
+                            Fshi Të Dhënat
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- VIEW 2: TODAY'S APPOINTMENTS -->
+            <div id="view-appointments" class="view-container-hidden">
+                <header class="content-header">
+                    <h1>Terminet e Sotme</h1>
+                    <p>Pasqyra e pacientëve të trajtuar gjatë ditës së sotme.</p>
+                </header>
+
+                <!-- List Container -->
+                <div id="appointments-container" class="form-grid full-width">
+                    <p>Duke ngarkuar...</p>
+                </div>
+            </div>
+
+            <!-- VIEW 3: SETTINGS -->
+            <div id="view-settings" class="view-container-hidden">
+                <header class="content-header">
+                    <h1>Konfigurimet e Profilit</h1>
+                    <p>Menaxhoni të dhënat tuaja personale dhe preferencat e sistemit.</p>
+                </header>
+
+                <div class="form-card form-card-settings">
+                    <form id="settingsForm">
+                        <div class="form-grid">
+                            <!-- Name -->
+                            <div class="input-group">
+                                <label>Emri dhe Mbiemri</label>
+                                <input type="text" id="setting-name" required>
+                            </div>
+
+                            <!-- Email (Read-only) -->
+                            <div class="input-group">
+                                <label>Email (ID e Përdoruesit)</label>
+                                <input type="text" id="setting-email" readonly disabled class="input-readonly-style">
+                            </div>
+
+                            <!-- New Password -->
+                            <div class="input-group">
+                                <label>Fjalëkalimi i Ri</label>
+                                <input type="password" id="setting-password"
+                                    placeholder="Lini bosh për të mos ndryshuar">
+                            </div>
+
+                            <!-- Confirm Password -->
+                            <div class="input-group">
+                                <label>Konfirmo Fjalëkalimin</label>
+                                <input type="password" id="setting-confirm-password"
+                                    placeholder="Përsërit fjalëkalimin">
+                            </div>
+                        </div>
+
+                        <div class="form-actions form-actions-margin">
+                            <button type="submit" class="save-btn">
+                                <i class="fas fa-save"></i> Ruaj Ndryshimet
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            &copy; 2025 Republika e Kosovës - Sistemi i Integruar i Shëndetësisë (HIS)
+        </p>
+    </footer>
+
+    <!-- Logic Script -->
+    <script src="../../js/doctor.js"></script>
+</body>
+
+</html>
