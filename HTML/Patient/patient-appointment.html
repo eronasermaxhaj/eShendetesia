@@ -1,57 +1,23 @@
 <!DOCTYPE html>
 <html lang="sq">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!--
-    ======================================================
-    TO BE DONE (APPOINTMENT SCHEDULING PAGE):
-
-    1. Hospital selection:
-       - Load hospitals dynamically from backend (SIMULATED)
-       - Filter services based on hospital
-
-    2. Date selection:
-       - Fetch available dates from hospital system
-       - Disable unavailable dates dynamically
-
-    3. Time slot handling:
-       - Load available time slots per hospital & date
-       - Disable already reserved slots
-       - Highlight selected slot
-
-    4. Reservation summary:
-       - Update summary panel in real time
-       - Show selected hospital, date, and time
-
-    5. Confirm appointment:
-       - Save appointment to database (SIMULATED)
-       - Prevent double booking
-       - Show confirmation message / redirect
-
-    6. Change / Delete appointment:
-       - Allow editing before confirmation
-       - Remove appointment from system
-
-    7. Backend integration (later):
-       - Link appointment to logged-in patient ID
-       - Store appointment history
-    ======================================================
-    -->
-
     <title>Cakto Terminin - eShendetesia</title>
 
     <!-- Page-specific styling -->
-    <link rel="stylesheet" href="/CSS/Patient/patient-appointment.css">
+    <link rel="stylesheet" href="../../css/Patient/patient-appointment.css">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
 
     <!-- 
-    Navigation bar for patient-related pages
+    Navigation Bar
+    - Standard Patient navigation menu.
     -->
     <nav class="main-nav">
 
@@ -63,34 +29,30 @@
             <!-- Navigation links -->
             <div class="main-links">
 
-                <!-- Back to patient main page -->
-                <a href="patient-dashboard.html">
-                    <i class="fas fa-home"></i> Ballina
-                </a>
+                <!-- Services -->
+                <a href="patient-dashboard.html"><i class="fas fa-stethoscope"></i> Shërbimet</a>
 
-                <!-- 
-                TO BE DONE:
-                - Show list of patient's appointments
-                -->
-                <a href="#">
+                <!-- My Appointments -->
+                <a href="my-appointment.html">
                     <i class="fas fa-calendar-check"></i> Terminet e Mia
                 </a>
 
-                <!-- 
-                TO BE DONE:
-                - Patient profile page
-                -->
-                <a href="#">
-                    <i class="fas fa-user"></i> Profili
-                </a>
+                <!-- Info -->
+                <a href="../info.html"><i class="fas fa-info-circle"></i> Informata</a>
+
+                <!-- Help -->
+                <a href="../help.html"><i class="fas fa-question-circle"></i> Ndihmë</a>
+
+                <!-- Logout -->
+                <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Dil</a>
             </div>
         </div>
     </nav>
 
-    <!-- Main booking layout -->
+    <!-- Main Booking Layout -->
     <main class="booking-wrapper">
 
-        <!-- Page header -->
+        <!-- Page Header -->
         <div class="header-area">
             <h1>Caktimi i Terminit</h1>
             <p>
@@ -100,23 +62,18 @@
         </div>
 
         <!-- 
-        Grid layout:
-        - Left: appointment form
-        - Right: booking summary
+        Booking Interface Grid:
+        - Left Column: Selection Controls (Hospital, Date, Time).
+        - Right Column: Live Summary and Confirmation Actions.
         -->
         <div class="booking-grid">
 
-            <!-- Appointment input form -->
+            <!-- Appointment Input Form -->
             <section class="form-card">
 
-                <!-- Hospital selection -->
+                <!-- Hospital Selection -->
                 <div class="input-section">
                     <label>Spitali / Qendra Mjekësore</label>
-
-                    <!-- 
-                    TO BE DONE:
-                    - Populate dynamically from backend
-                    -->
                     <select id="hospital-select">
                         <option value="">Zgjidhni Spitalin...</option>
                         <option>QKUK - Prishtinë</option>
@@ -125,40 +82,27 @@
                     </select>
                 </div>
 
-                <!-- Visit date selection -->
+                <!-- Date Selection -->
                 <div class="input-section">
                     <label>Data e Vizitës (Maksimum 2 muaj)</label>
-
-                    <!-- 
-                    TO BE DONE:
-                    - Disable unavailable dates dynamically
-                    -->
+                    <!-- Dates constrained by JS logic -->
                     <input type="date" id="date-picker">
                 </div>
 
-                <!-- Time slot selection -->
+                <!-- Time Slot Selection -->
                 <div class="input-section">
                     <label>Orari i Disponueshëm (08:00 - 15:00)</label>
 
-                    <!-- Additional information -->
                     <p class="small-info">
                         Terminet janë të ndara me nga 15 minuta hapësirë.
                     </p>
 
-                    <!-- 
-                    TO BE DONE:
-                    - Generate slots dynamically
-                    - Disable reserved times
-                    - Handle selected slot state
-                    -->
+                    <!-- Slots Container (Populated/Managed by JS) -->
                     <div class="time-slots-container">
                         <button class="slot">08:00</button>
                         <button class="slot">08:15</button>
                         <button class="slot">08:30</button>
-
-                        <!-- Example of unavailable slot -->
-                        <button class="slot disabled" disabled>08:45</button>
-
+                        <button class="slot">08:45</button>
                         <button class="slot">09:00</button>
                         <button class="slot">09:15</button>
                         <button class="slot">09:30</button>
@@ -169,45 +113,37 @@
                 </div>
             </section>
 
-            <!-- Booking summary panel -->
+            <!-- Booking Summary Panel -->
             <aside class="summary-card">
 
-                <!-- Summary title -->
                 <h3>Detajet e Rezervimit</h3>
 
-                <!-- Selected hospital -->
+                <!-- Selected Hospital Preview -->
                 <div class="detail-row">
                     <span>Institucioni:</span>
                     <strong id="res-hospital">Pa zgjedhur</strong>
                 </div>
 
-                <!-- Selected date -->
+                <!-- Selected Date Preview -->
                 <div class="detail-row">
                     <span>Data:</span>
                     <strong id="res-date">-- / -- / ----</strong>
                 </div>
 
-                <!-- Selected time -->
+                <!-- Selected Time Preview -->
                 <div class="detail-row">
                     <span>Ora:</span>
                     <strong id="res-time">-- : --</strong>
                 </div>
 
-                <!-- 
-                TO BE DONE:
-                - Enable buttons only when selection is complete
-                -->
+                <!-- Action Buttons -->
                 <div class="action-buttons">
                     <button class="btn-confirm">Konfirmo Terminin</button>
-
-                    <!-- Edit selection -->
                     <button class="btn-change">Ndrysho</button>
-
-                    <!-- Remove appointment -->
                     <button class="btn-remove">Fshij</button>
                 </div>
 
-                <!-- Arrival instructions -->
+                <!-- Arrival Instruction/Notice -->
                 <div class="arrival-notice">
                     <i class="fas fa-exclamation-circle"></i>
                     <p>
@@ -227,29 +163,9 @@
         </div>
     </footer>
 
-    <!-- Page-specific JavaScript -->
-    <script>
-        /*
-        This script limits date selection:
-        - Minimum: today
-        - Maximum: today + 2 months
-        */
-
-        const dateInput = document.getElementById('date-picker');
-        const today = new Date();
-        const maxDate = new Date();
-
-        maxDate.setMonth(today.getMonth() + 2);
-
-        dateInput.min = today.toISOString().split('T')[0];
-        dateInput.max = maxDate.toISOString().split('T')[0];
-
-        /*
-        TO BE DONE:
-        - Listen for hospital/date/time selection
-        - Update reservation summary dynamically
-        - Handle confirm / change / delete logic
-        */
-    </script>
+    <!-- Page Logic -->
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/patient-appointment.js"></script>
 </body>
+
 </html>

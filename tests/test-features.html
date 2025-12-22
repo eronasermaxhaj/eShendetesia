@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Comprehensive System Verification</title>
+    <link rel="stylesheet" href="test-features.css">
+    <!-- Dependencies -->
+    <script src="../js/auth.js"></script>
+    <script src="../js/doctor.js"></script>
+    <script src="../js/staff.js"></script>
+    <script src="../js/patient.js"></script>
+</head>
+
+<body>
+    <h1>System Verification Suite</h1>
+    <div id="logs"></div>
+
+    <!-- MOCK DOM -->
+    <div id="mock-dom" style="display:none;">
+        <!-- Auth Mocks -->
+        <!-- (AuthService uses args, no DOM) -->
+
+        <!-- Doctor Mocks -->
+        <form id="settingsForm"></form>
+        <input id="setting-name" value="Dr. Test Updated">
+        <input id="setting-password" value="newpass">
+        <input id="setting-confirm-password" value="newpass">
+        <span id="doctorNameDisplay"></span>
+        <input id="patientIdInput" value="1234567890">
+        <input id="patientNameInput" value="Test">
+        <input id="patientSurnameInput" value="Patient">
+        <select id="procedure-select">
+            <option value="ct" selected>CT Scan</option>
+        </select>
+        <input type="radio" name="priority" value="low" checked>
+        <input list="icd-codes" value="A00">
+        <textarea>Notes</textarea>
+        <div id="appointments-container"></div> <!-- For render -->
+
+        <!-- Patient Mocks -->
+        <div id="medical-reports-container"></div>
+
+        <!-- Staff Mocks -->
+        <input id="checkin-id" value="1234567890">
+        <form id="reg-form"></form>
+        <input id="reg-id" value="1234567890">
+        <input id="reg-dept" value="Cardiology">
+        <input id="reg-procedure" value="checkup">
+        <input id="reg-date" value="2025-10-10">
+        <input id="reg-time" value="08:00">
+        <input id="reg-doctor" value="doc1">
+
+        <!-- Staff Search & Settings Mocks -->
+        <input id="search-input" value="">
+        <div id="search-results"></div>
+        <div id="view-search"></div>
+        <div id="view-appointments"></div>
+        <div id="view-settings"></div>
+        <a id="nav-search"></a>
+        <a id="nav-appointments"></a>
+        <a id="nav-settings"></a>
+        <a id="nav-registration"></a>
+
+        <!-- Staff Settings Form -->
+        <input id="current-password">
+        <input id="new-password">
+        <input id="confirm-password">
+        <form id="settings-form"></form>
+    </div>
+
+    <!-- Test Logic -->
+    <script src="test-features.js"></script>
+</body>
+
+</html>

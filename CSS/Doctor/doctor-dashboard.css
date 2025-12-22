@@ -45,7 +45,9 @@ body {
     font-size: 14px;
 }
 
-.logout-btn:hover { color: white; }
+.logout-btn:hover {
+    color: white;
+}
 
 /* Layout Grid */
 .dashboard-container {
@@ -78,7 +80,10 @@ body {
     transition: 0.2s;
 }
 
-.sidebar a i { margin-right: 10px; width: 20px; }
+.sidebar a i {
+    margin-right: 10px;
+    width: 20px;
+}
 
 .sidebar a.active {
     background-color: white;
@@ -87,7 +92,9 @@ body {
     border-bottom: 1px solid var(--border-color);
 }
 
-.sidebar a:hover:not(.active) { background: #e2eef8; }
+.sidebar a:hover:not(.active) {
+    background: #e2eef8;
+}
 
 /* Main Content Area */
 .main-content {
@@ -95,20 +102,32 @@ body {
     padding: 40px 6%;
 }
 
-.content-header { margin-bottom: 35px; }
-.content-header h1 { color: var(--dark-blue); font-size: 28px; }
-.content-header p { color: #5a6c7d; }
+.content-header {
+    margin-bottom: 35px;
+}
+
+.content-header h1 {
+    color: var(--dark-blue);
+    font-size: 28px;
+}
+
+.content-header p {
+    color: #5a6c7d;
+}
 
 /* Form Card Styling */
 .patient-form {
     background: white;
     border: 1px solid var(--border-color);
     padding: 40px;
-    border-radius: 4px; /* Cornery look */
+    border-radius: 4px;
+    /* Cornery look */
     box-shadow: 6px 6px 0px var(--sidebar-bg);
 }
 
-.form-section { margin-bottom: 40px; }
+.form-section {
+    margin-bottom: 40px;
+}
 
 .section-title {
     font-size: 17px;
@@ -125,7 +144,9 @@ body {
     gap: 25px;
 }
 
-.input-group.full-width { grid-column: span 3; }
+.input-group.full-width {
+    grid-column: span 3;
+}
 
 .input-group label {
     display: block;
@@ -135,7 +156,9 @@ body {
     color: var(--dark-blue);
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid var(--border-color);
@@ -144,7 +167,9 @@ input, select, textarea {
     background: #fdfdfd;
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
     outline: none;
     border-color: var(--primary-blue);
     background: white;
@@ -168,15 +193,15 @@ input:focus, select:focus, textarea:focus {
 
 /* Danger Input for Allergies */
 .danger-input {
-    border: 1px solid #fab1a0 !important;
-    background-color: #fff8f8 !important;
+    border: 1px solid #fab1a0;
+    background-color: #fff8f8;
     color: var(--danger-red);
     font-weight: bold;
 }
 
 /* Procedure Scroll Area */
 .scroll-select {
-    height: 140px !important;
+    height: 140px;
     overflow-y: auto;
 }
 
@@ -209,8 +234,13 @@ input:focus, select:focus, textarea:focus {
     color: #777;
 }
 
-.save-btn:hover { background: var(--dark-blue); }
-.clear-btn:hover { background: #eee; }
+.save-btn:hover {
+    background: var(--dark-blue);
+}
+
+.clear-btn:hover {
+    background: #eee;
+}
 
 /* Footer */
 footer {
@@ -223,8 +253,20 @@ footer {
 }
 
 @media (max-width: 900px) {
-    .form-grid { grid-template-columns: 1fr; }
-    .input-group.full-width { grid-column: span 1; }
-    .sidebar { width: 80px; }
-    .sidebar span, .sidebar-header { display: none; }
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .input-group.full-width {
+        grid-column: span 1;
+    }
+
+    .sidebar {
+        width: 80px;
+    }
+
+    .sidebar span,
+    .sidebar-header {
+        display: none;
+    }
 }

@@ -16,7 +16,10 @@
     font-family: 'Segoe UI', Arial, sans-serif;
 }
 
-body { background-color: var(--bg-main); color: #333; }
+body {
+    background-color: var(--bg-main);
+    color: #333;
+}
 
 /* Doctor Nav */
 .doctor-nav {
@@ -37,10 +40,18 @@ body { background-color: var(--bg-main); color: #333; }
     margin-left: 10px;
 }
 
-.logout-btn { color: #cbdcf0; text-decoration: none; font-size: 14px; margin-left: 20px; }
+.logout-btn {
+    color: #cbdcf0;
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: 20px;
+}
 
 /* Dashboard Layout */
-.dashboard-container { display: flex; min-height: calc(100vh - 120px); }
+.dashboard-container {
+    display: flex;
+    min-height: calc(100vh - 120px);
+}
 
 .sidebar {
     width: 260px;
@@ -65,7 +76,10 @@ body { background-color: var(--bg-main); color: #333; }
 }
 
 /* Main Content Area */
-.main-content { flex: 1; padding: 40px 6%; }
+.main-content {
+    flex: 1;
+    padding: 40px 6%;
+}
 
 /* Search Bar Styles */
 .search-container {
@@ -133,6 +147,14 @@ body { background-color: var(--bg-main); color: #333; }
     font-size: 15px;
 }
 
+.management-table tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.management-table tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
 /* Priority Badges */
 .prio-badge {
     padding: 4px 10px;
@@ -142,9 +164,20 @@ body { background-color: var(--bg-main); color: #333; }
     text-transform: uppercase;
 }
 
-.prio-badge.high { background: #fee2e2; color: var(--danger-red); }
-.prio-badge.medium { background: #fef3c7; color: var(--warning-orange); }
-.prio-badge.low { background: #dcfce7; color: var(--success-green); }
+.prio-badge.high {
+    background: #fee2e2;
+    color: var(--danger-red);
+}
+
+.prio-badge.medium {
+    background: #fef3c7;
+    color: var(--warning-orange);
+}
+
+.prio-badge.low {
+    background: #dcfce7;
+    color: var(--success-green);
+}
 
 /* Action Buttons in Table */
 .action-cells {
@@ -152,7 +185,8 @@ body { background-color: var(--bg-main); color: #333; }
     gap: 10px;
 }
 
-.edit-icon, .delete-icon {
+.edit-icon,
+.delete-icon {
     border: none;
     background: none;
     cursor: pointer;
@@ -160,11 +194,21 @@ body { background-color: var(--bg-main); color: #333; }
     transition: 0.2s;
 }
 
-.edit-icon { color: var(--primary-blue); }
-.delete-icon { color: var(--danger-red); }
+.edit-icon {
+    color: var(--primary-blue);
+}
 
-.edit-icon:hover { transform: scale(1.2); }
-.delete-icon:hover { transform: scale(1.2); }
+.delete-icon {
+    color: var(--danger-red);
+}
+
+.edit-icon:hover {
+    transform: scale(1.2);
+}
+
+.delete-icon:hover {
+    transform: scale(1.2);
+}
 
 /* Footer */
 footer {

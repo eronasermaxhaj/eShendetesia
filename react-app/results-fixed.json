@@ -1,0 +1,88 @@
+{
+  "numTotalTestSuites": 4,
+  "numPassedTestSuites": 4,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 5,
+  "numPassedTests": 5,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "startTime": 1766375402507,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "",
+            "App"
+          ],
+          "fullName": " App renders the title",
+          "status": "passed",
+          "title": "renders the title",
+          "duration": 28,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1766375404106,
+      "endTime": 1766375404134,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/91Life/Downloads/eShendetesia-1/react-app/src/App.test.jsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "",
+            "SymptomForm"
+          ],
+          "fullName": " SymptomForm renders input and select fields",
+          "status": "passed",
+          "title": "renders input and select fields",
+          "duration": 62,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "SymptomForm"
+          ],
+          "fullName": " SymptomForm updates input value on change",
+          "status": "passed",
+          "title": "updates input value on change",
+          "duration": 6,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "SymptomForm"
+          ],
+          "fullName": " SymptomForm calls onAddSymptom when submitted with valid data",
+          "status": "passed",
+          "title": "calls onAddSymptom when submitted with valid data",
+          "duration": 17,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "SymptomForm"
+          ],
+          "fullName": " SymptomForm does not submit empty input",
+          "status": "passed",
+          "title": "does not submit empty input",
+          "duration": 7,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1766375404158,
+      "endTime": 1766375404250,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/91Life/Downloads/eShendetesia-1/react-app/src/components/SymptomForm.test.jsx"
+    }
+  ]
+}

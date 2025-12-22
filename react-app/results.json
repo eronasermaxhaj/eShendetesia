@@ -1,0 +1,76 @@
+{
+  "numTotalTestSuites": 3,
+  "numPassedTestSuites": 2,
+  "numFailedTestSuites": 1,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 4,
+  "numPassedTests": 4,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "startTime": 1766375353649,
+  "success": false,
+  "testResults": [
+    {
+      "assertionResults": [],
+      "startTime": 1766375353649,
+      "endTime": 1766375353649,
+      "status": "passed",
+      "message": "Failed to load url ../App (resolved id: ../App) in C:/Users/91Life/Downloads/eShendetesia-1/react-app/src/App.test.jsx. Does the file exist?",
+      "name": "C:/Users/91Life/Downloads/eShendetesia-1/react-app/src/App.test.jsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "",
+            "SymptomForm"
+          ],
+          "fullName": " SymptomForm renders input and select fields",
+          "status": "passed",
+          "title": "renders input and select fields",
+          "duration": 53,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "SymptomForm"
+          ],
+          "fullName": " SymptomForm updates input value on change",
+          "status": "passed",
+          "title": "updates input value on change",
+          "duration": 11,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "SymptomForm"
+          ],
+          "fullName": " SymptomForm calls onAddSymptom when submitted with valid data",
+          "status": "passed",
+          "title": "calls onAddSymptom when submitted with valid data",
+          "duration": 13,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "SymptomForm"
+          ],
+          "fullName": " SymptomForm does not submit empty input",
+          "status": "passed",
+          "title": "does not submit empty input",
+          "duration": 6,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1766375355194,
+      "endTime": 1766375355277,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/91Life/Downloads/eShendetesia-1/react-app/src/components/SymptomForm.test.jsx"
+    }
+  ]
+}

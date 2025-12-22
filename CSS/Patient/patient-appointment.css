@@ -73,7 +73,8 @@ body {
     background: white;
     padding: 30px;
     border: 1px solid var(--border-color);
-    border-radius: 4px; /* Cornery */
+    border-radius: 4px;
+    /* Cornery */
 }
 
 .input-section {
@@ -87,7 +88,8 @@ body {
     margin-bottom: 8px;
 }
 
-select, input[type="date"] {
+select,
+input[type="date"] {
     width: 100%;
     padding: 12px;
     border: 1px solid var(--border-color);
@@ -160,8 +162,11 @@ select, input[type="date"] {
 .action-buttons {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
+    /* Increased gap */
     margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
 }
 
 .btn-confirm {
@@ -174,9 +179,12 @@ select, input[type="date"] {
     border-radius: 4px;
 }
 
-.btn-confirm:hover { background: var(--dark-blue); }
+.btn-confirm:hover {
+    background: var(--dark-blue);
+}
 
-.btn-change, .btn-remove {
+.btn-change,
+.btn-remove {
     background: white;
     padding: 10px;
     border-radius: 4px;
@@ -184,8 +192,15 @@ select, input[type="date"] {
     font-weight: 600;
 }
 
-.btn-change { border: 1px solid var(--primary-blue); color: var(--primary-blue); }
-.btn-remove { border: 1px solid #c0392b; color: #c0392b; }
+.btn-change {
+    border: 1px solid var(--primary-blue);
+    color: var(--primary-blue);
+}
+
+.btn-remove {
+    border: 1px solid #c0392b;
+    color: #c0392b;
+}
 
 /* Notice area */
 .arrival-notice {
@@ -199,7 +214,10 @@ select, input[type="date"] {
     line-height: 1.4;
 }
 
-.arrival-notice i { color: #f39c12; margin-top: 3px; }
+.arrival-notice i {
+    color: #f39c12;
+    margin-top: 3px;
+}
 
 /* Footer */
 footer {
@@ -212,5 +230,7 @@ footer {
 }
 
 @media (max-width: 850px) {
-    .booking-grid { grid-template-columns: 1fr; }
+    .booking-grid {
+        grid-template-columns: 1fr;
+    }
 }

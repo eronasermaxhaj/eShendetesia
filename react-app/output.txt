@@ -1,0 +1,19 @@
+
+[7m[1m[36m RUN [39m[22m[27m [36mv0.31.4[39m [90mC:/Users/91Life/Downloads/eShendetesia-1/react-app[39m
+
+ [33m❯[39m src/App.test.jsx [2m ([22m[2m0 test[22m[2m)[22m
+ [32m✓[39m src/components/SymptomForm.test.jsx [2m ([22m[2m4 tests[22m[2m)[22m[90m 105[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯[1m[7m Failed Suites 1 [27m[22m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/App.test.jsx [2m[ src/App.test.jsx ][22m
+[31m[1mError[22m: Failed to load url ../App (resolved id: ../App) in C:/Users/91Life/Downloads/eShendetesia-1/react-app/src/App.test.jsx. Does the file exist?[39m
+[90m [2m❯[22m loadAndTransform node_modules/vite/dist/node/chunks/dep-827b23df.js:[2m55077:21[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m1 passed[39m[22m[90m (2)[39m
+[2m      Tests [22m [1m[32m4 passed[39m[22m[90m (4)[39m
+[2m   Start at [22m 04:49:04
+[2m   Duration [22m 1.82s[2m (transform 30ms, setup 258ms, collect 224ms, tests 105ms, environment 1.34s, prepare 234ms)[22m
+

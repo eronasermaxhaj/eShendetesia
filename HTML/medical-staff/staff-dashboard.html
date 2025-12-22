@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!-- 
+eShendetesia - Staff Dashboard (Nurse / Receptionist)
+Provides tools for:
+- Patient Identification via National ID.
+- Patient Check-in logic.
+- Manual appointment scheduling (Offline mode support).
+- Managing daily queue (Arrived, Cancelled, Completed).
+-->
+<html lang="sq">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Stafi Administrativ - eShendetesia</title>
+
+    <!-- Page-specific styles -->
+    <link rel="stylesheet" href="../../css/medical-staff/staff-dashboard.css">
+
+    <!-- Icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Auth Check -->
+    <script src="../../js/auth.js"></script>
+</head>
+
+<body>
+
+    <!-- Top Navigation for Administrative Staff -->
+    <nav class="staff-nav">
+        <!-- Logo and Role Badge -->
+        <div class="logo">
+            eShendetesia <span class="staff-tag">Stafi</span>
+        </div>
+
+        <div class="nav-right">
+            <!-- Institution (Static for Demo, Dynamic in Prod) -->
+            <span>
+                <i class="fas fa-hospital"></i> QKUK - Prishtinë
+            </span>
+
+            <!-- Logout -->
+            <a href="#" class="logout-btn" onclick="AuthService.logout(); return false;"><i
+                    class="fas fa-sign-out-alt"></i> Dil</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-wrapper">
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">Menytë</div>
+
+            <!-- Main Actions -->
+            <a href="#" id="nav-registration" class="active" onclick="StaffService.switchView('registration')">
+                <i class="fas fa-plus-square"></i> Regjistrim i Ri
+            </a>
+
+            <a href="#" id="nav-appointments" onclick="StaffService.switchView('appointments')">
+                <i class="fas fa-list"></i> Terminet e Sotme
+            </a>
+
+            <!-- Search -->
+            <a href="#" id="nav-search" onclick="StaffService.switchView('search')">
+                <i class="fas fa-search"></i> Kërko Pacientin
+            </a>
+
+            <!-- Settings -->
+            <a href="#" id="nav-settings" onclick="StaffService.switchView('settings')">
+                <i class="fas fa-cog"></i> Konfigurimet
+            </a>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+
+            <!-- View: Search & New Registration (Default View) -->
+            <div id="view-search">
+                <header class="content-header">
+                    <h1>Menaxhimi i Pacientëve</h1>
+                </header>
+
+                <!-- Patient Search Section -->
+                <section class="checkin-box">
+                    <h3>
+                        <i class="fas fa-search"></i> Kërko Pacientin
+                    </h3>
+
+                    <div class="search-row">
+                        <input type="text" id="search-input" placeholder="Shkruaj ID ose Emrin e pacientit..."
+                            class="search-input-flex">
+                        <button class="btn-checkin" onclick="StaffService.searchPatient()">
+                            <i class="fas fa-search"></i> Kërko
+                        </button>
+                    </div>
+
+                    <!-- Search Results Render Area -->
+                    <div id="search-results" class="search-results-area">
+                        <!-- Dynamic Results -->
+                    </div>
+                </section>
+
+                <!-- Manual Appointment Scheduling (Offline Support) -->
+                <section class="form-container manual-reg-container">
+                    <h2><i class="fas fa-plus-circle"></i> Regjistro Termin të Ri (Offline)</h2>
+
+                    <form class="manual-form" onsubmit="StaffService.handleManualRegister(event)">
+                        <div class="input-grid">
+
+                            <!-- Patient ID -->
+                            <div class="field">
+                                <label>ID Personale</label>
+                                <input type="text" id="reg-id" placeholder="1234567890" required>
+                            </div>
+
+                            <!-- Procedure Selection -->
+                            <div class="field">
+                                <label>Procedura</label>
+                                <select id="reg-procedure">
+                                    <option value="Kontrollë">Kontrollë</option>
+                                    <option value="Analiza Laboratorike">Analiza Laboratorike</option>
+                                    <option value="Rëntgen">Rëntgen</option>
+                                    <option value="EKG">EKG</option>
+                                    <option value="Vaksinim">Vaksinim</option>
+                                    <option value="Tjetër">Tjetër</option>
+                                </select>
+                            </div>
+
+                            <!-- Details -->
+                            <div class="field">
+                                <label>Data</label>
+                                <input type="date" id="reg-date" required>
+                            </div>
+
+                            <div class="field">
+                                <label>Koha</label>
+                                <input type="time" id="reg-time" required>
+                            </div>
+
+                            <div class="field">
+                                <label>Mjeku Përgjegjës</label>
+                                <select id="reg-doctor" required>
+                                    <option value="">Zgjidhni Mjekun...</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="form-actions">
+                            <button type="submit" class="save-btn">
+                                Ruaj Terminin
+                            </button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+
+            <!-- View: Today's Appointments List -->
+            <div id="view-appointments" style="display: none;">
+                <header class="content-header">
+                    <h1>Lista e Rezervimeve (Sot)</h1>
+                </header>
+
+                <section class="table-section">
+                    <table class="staff-table">
+                        <caption class="table-caption-style">
+                            Lista e rezervimeve aktive për ditën e sotme
+                        </caption>
+                        <thead>
+                            <tr>
+                                <th>Koha</th>
+                                <th>Pacienti</th>
+                                <th>ID</th>
+                                <th>Procedura</th>
+                                <th>Mjeku</th>
+                                <th>Statusi</th>
+                                <th>Aksioni</th>
+                            </tr>
+                        </thead>
+                        <tbody id="staff-appointments-body">
+                            <!-- Dynamic Rows from JS -->
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+
+            <!-- View: User Settings -->
+            <div id="view-settings" class="view-settings-padded">
+                <header class="content-header">
+                    <h1>Konfigurimet e Llogarisë</h1>
+                </header>
+
+                <section class="form-container settings-form-container">
+                    <form onsubmit="StaffService.updateSettings(event)">
+                        <div class="field settings-field-margin">
+                            <label>Fjalëkalimi Aktual</label>
+                            <input type="password" id="current-password" required class="settings-input-style">
+                        </div>
+                        <div class="field settings-field-margin">
+                            <label>Fjalëkalimi i Ri</label>
+                            <input type="password" id="new-password" required class="settings-input-style">
+                        </div>
+                        <div class="field settings-field-margin">
+                            <label>Konfirmo Fjalëkalimin</label>
+                            <input type="password" id="confirm-password" required class="settings-input-style">
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="save-btn">Ruaj Ndryshimet</button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Logic Script -->
+    <script src="../../js/staff.js"></script>
+    </div>
+
+</body>
+
+</html>
