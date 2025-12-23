@@ -40,13 +40,24 @@ body {
 
 .main-links a {
     text-decoration: none;
-    color: var(--dark-blue);
+    color: #555;
+    /* Matched Ballina */
     font-weight: 600;
     margin-left: 25px;
+    font-size: 15px;
+    /* Matched Ballina */
+    transition: color 0.3s;
 }
 
+.main-links a:hover {
+    color: #093f79;
+    /* Matched Ballina */
+}
+
+/* Active State - Removed border to match Ballina */
 .main-links a.active {
-    border-bottom: 2px solid var(--primary-blue);
+    /* border-bottom: 2px solid var(--primary-blue); */
+    color: #093f79;
 }
 
 /* Layout */
@@ -122,7 +133,8 @@ body {
     justify-content: flex-end;
 }
 
-.btn-secondary, .btn-danger {
+.btn-secondary,
+.btn-danger {
     padding: 10px 18px;
     border-radius: 4px;
     font-weight: bold;
@@ -142,8 +154,15 @@ body {
     color: var(--danger-red);
 }
 
-.btn-secondary:hover { background: var(--primary-blue); color: white; }
-.btn-danger:hover { background: var(--danger-red); color: white; }
+.btn-secondary:hover {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.btn-danger:hover {
+    background: var(--danger-red);
+    color: white;
+}
 
 /* History Table */
 .history-section {
@@ -157,7 +176,8 @@ body {
     border: 1px solid var(--border-color);
 }
 
-.history-table th, .history-table td {
+.history-table th,
+.history-table td {
     padding: 15px;
     text-align: left;
     border-bottom: 1px solid #eee;

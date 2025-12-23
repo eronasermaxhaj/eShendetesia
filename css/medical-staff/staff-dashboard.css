@@ -211,3 +211,136 @@ select {
     text-decoration: none;
     font-size: 14px;
 }
+
+/* Modern Appointment Card - 4 Columns */
+.appointment-card-modern {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    /* Soft shadow like reference */
+    margin-bottom: 0px;
+    /* Controlled by grid gap container */
+    transition: transform 0.2s;
+}
+
+.appointment-card-modern:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.08);
+    /* Lift effect */
+}
+
+/* Columns */
+.col {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    /* Distribute space */
+}
+
+.col.action-col {
+    flex: 0 0 160px;
+    /* Fixed width for actions to keep them aligned right */
+    align-items: flex-end;
+    text-align: right;
+}
+
+/* Labels (Small, Uppercase, Gray) */
+.col label {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #718096;
+    /* Cool gray */
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+/* Values (Bold, Dark) */
+.col .value {
+    font-size: 15px;
+    font-weight: 600;
+    color: #2d3748;
+    /* Dark gray/blue */
+}
+
+.col .sub-value {
+    font-size: 13px;
+    color: #718096;
+}
+
+.text-blue {
+    color: #3182ce !important;
+    /* Brand Blue */
+}
+
+/* Action Wrapper */
+.action-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+    width: 100%;
+}
+
+/* Status Pills */
+.status-pill {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.status-waiting {
+    background-color: #ebf8ff;
+    color: #3182ce;
+}
+
+.status-arrived {
+    background-color: #e6fffa;
+    color: #38a169;
+}
+
+/* Buttons */
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    transition: all 0.2s;
+}
+
+/* Check-in Button */
+.btn-checkin {
+    background-color: #3182ce;
+    color: white;
+}
+
+.btn-checkin:hover {
+    background-color: #2b6cb0;
+}
+
+/* Complete Button */
+.btn-complete {
+    background-color: #38a169;
+    color: white;
+}
+
+.btn-complete:hover {
+    background-color: #2f855a;
+}

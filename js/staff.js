@@ -16,7 +16,24 @@ const StaffService = {
      */
     init: function () {
         console.log("Staff Dashboard Initialized");
+        this.displayStaffName();
         this.renderDoctorDropdown();
+    },
+
+    /**
+     * Displays the logged-in staff name in the header.
+     */
+    displayStaffName: function () {
+        const user = AuthService.getCurrentUser();
+        const nameEl = document.getElementById('staffNameText');
+
+        if (user && nameEl) {
+            // Capitalize first letters just in case
+            const formattedName = user.name.split(' ')
+                .map(n => n.charAt(0).toUpperCase() + n.slice(1))
+                .join(' ');
+            nameEl.textContent = formattedName;
+        }
     },
 
     /**
@@ -168,6 +185,100 @@ const StaffService = {
     },
 
     /**
+     * Renders the list of appointments assigned to the logged-in staff member.
+     * This addresses the issue where technical procedures (ECG, etc.) were hidden.
+     */
+    renderAppointments: function () {
+        const container = document.getElementById('view-appointments');
+        const currentUser = AuthService.getCurrentUser();
+        const appointments = JSON.parse(localStorage.getItem('eShendetesia_appointments')) || [];
+
+        // Filter: Assigned to ME + Active Statuses (exclude cancelled AND completed)
+        const myTasks = appointments.filter(a =>
+            a.doctorId === currentUser.id &&
+            ['scheduled', 'confirmed', 'arrived'].includes(a.status)
+        ).sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        if (myTasks.length === 0) {
+            container.innerHTML = `
+                <div class="header-section">
+                    <h2>Emërimet e Mia</h2>
+                    <div style="color: #718096;">Nuk keni asnjë procedurë në pritje.</div>
+                </div>
+                <div style="text-align:center; padding: 40px; color: #a0aec0; background: white; border-radius: 8px; margin-top:20px;">
+                    <i class="fas fa-check-circle" style="font-size: 48px; margin-bottom: 15px; color:#48bb78;"></i>
+                    <p>Të gjitha procedurat janë përfunduar me sukses!</p>
+                </div>`;
+            return;
+        }
+
+        let html = `
+            <div class="header-section">
+                <h2>Emërimet e Mia</h2>
+                <div style="color: #718096;">Procedurat aktive që kërkojnë veprim</div>
+            </div>
+            <div class="appointments-list" style="display: flex; flex-direction: column; gap: 20px; margin-top: 20px;">
+        `;
+
+        myTasks.forEach(app => {
+            const dateObj = new Date(app.date);
+            const dateStr = dateObj.toLocaleDateString('sq-AL', { year: 'numeric', month: '2-digit', day: '2-digit' });
+            const timeStr = dateObj.toLocaleTimeString('sq-AL', { hour: '2-digit', minute: '2-digit' });
+
+            // Capitalize Procedure Name
+            let procName = app.procedure || 'Procedurë Mjekësore';
+            if (procName.length <= 4) procName = procName.toUpperCase();
+            else procName = procName.charAt(0).toUpperCase() + procName.slice(1);
+
+            html += `
+                <div class="appointment-card-modern">
+                    <!-- Column 1: Procedure -->
+                    <div class="col">
+                        <label>PROCEDURA</label>
+                        <div class="value font-bold text-blue">${procName}</div>
+                    </div>
+
+                    <!-- Column 2: Patient -->
+                    <div class="col">
+                        <label>PACIENTI</label>
+                        <div class="value font-bold">${app.patientName}</div>
+                        <div class="sub-value">ID: ${app.patientId}</div>
+                    </div>
+
+                    <!-- Column 3: Date & Time -->
+                    <div class="col">
+                        <label>DATA DHE ORA</label>
+                        <div class="value">${dateStr}, ${timeStr}</div>
+                    </div>
+
+                    <!-- Column 4: Status / Actions -->
+                    <div class="col action-col">
+                        <label>VEPRIMI</label>
+                        <div class="action-wrapper">
+                             ${app.status === 'confirmed' || app.status === 'scheduled' ?
+                    `<span class="status-pill status-waiting">Në Pritje</span>
+                                 <button class="btn-action btn-checkin" onclick="StaffService.doCheckIn('${app.id}')">
+                                    <i class="fas fa-check"></i> Check-in
+                                 </button>` : ''
+                }
+                            ${app.status === 'arrived' ?
+                    `<span class="status-pill status-arrived">Arritur</span>
+                                 <button class="btn-action btn-complete" onclick="StaffService.completeAppointment('${app.id}')">
+                                    <i class="fas fa-check-double"></i> Përfundo
+                                 </button>` : ''
+                }
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        html += '</div>';
+        container.innerHTML = html;
+        container.style.display = 'block';
+    },
+
+    /**
      * Marks a patient as 'Arrived' for their appointment.
      * @param {string} appId - Appointment ID
      */
@@ -178,7 +289,12 @@ const StaffService = {
             appointments[index].status = 'arrived';
             localStorage.setItem('eShendetesia_appointments', JSON.stringify(appointments));
             alert('Statusi u përditësua në: Arritur');
-            this.searchPatient(); // Refresh results to show new status
+            // Refresh results to show new status
+            if (document.getElementById('view-appointments').style.display === 'block') {
+                this.renderAppointments();
+            } else {
+                this.searchPatient();
+            }
         }
     },
 

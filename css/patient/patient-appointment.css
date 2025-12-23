@@ -41,9 +41,15 @@ body {
 
 .main-links a {
     text-decoration: none;
-    color: var(--dark-blue);
+    color: #555;
     font-weight: 600;
     margin-left: 25px;
+    font-size: 15px;
+    transition: color 0.3s;
+}
+
+.main-links a:hover {
+    color: #093f79;
 }
 
 /* Main Layout */

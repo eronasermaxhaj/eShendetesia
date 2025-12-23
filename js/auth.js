@@ -25,27 +25,27 @@ const AuthService = {
         if (!localStorage.getItem('eShendetesia_users')) {
             const initialUsers = [
                 {
-                    id: "1231231234",
-                    password: "patient123",
+                    id: "1111111111",
+                    password: "Patient1!",
                     role: "patient",
-                    name: "Filan Fisteku",
-                    email: "filan@example.com"
+                    name: "Liridon Krasniqi",
+                    email: "liridon.krasniqi@example.com"
                 },
                 {
-                    id: "2223334445",
-                    password: "doctor123",
+                    id: "2222222222",
+                    password: "Doctor1!",
                     role: "doctor",
-                    name: "Dr. Arben Gashi",
+                    name: "Dr. Venera Mustafa",
                     specialization: "Kardiologji",
-                    email: "arben.gashi@spitali.ks"
+                    email: "venera.mustafa@spitali.ks"
                 },
                 {
-                    id: "5556667778",
-                    password: "staff123",
+                    id: "3333333333",
+                    password: "Staff12!",
                     role: "staff",
-                    name: "Agnesa Kelmendi",
+                    name: "Fatmir Sejdiu",
                     position: "Infermiere Kryesore",
-                    email: "agnesa.kelmendi@spitali.ks"
+                    email: "fatmir.sejdiu@spitali.ks"
                 }
             ];
             localStorage.setItem('eShendetesia_users', JSON.stringify(initialUsers));

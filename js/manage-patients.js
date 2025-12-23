@@ -2,8 +2,21 @@
 AuthService.requireLogin('doctor');
 
 document.addEventListener('DOMContentLoaded', () => {
+    displayDoctorName();
     renderTable();
 });
+
+function displayDoctorName() {
+    const user = AuthService.getCurrentUser();
+    const doctorNameElement = document.getElementById('doctorNameDisplay');
+
+    if (user && user.role === 'doctor' && doctorNameElement) {
+        const name = user.name.trim();
+        const hasPrefix = /^dr[\.\s]/i.test(name);
+        const displayName = hasPrefix ? name : `Dr. ${name}`;
+        doctorNameElement.innerHTML = `<i class="fas fa-user-md"></i> ${displayName}`;
+    }
+}
 
 function renderTable() {
     const tbody = document.getElementById('archive-table-body');

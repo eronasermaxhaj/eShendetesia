@@ -72,9 +72,9 @@ Use the following default accounts to explore the different roles within the sys
 
 | Role | Personal ID (User) | Password | Description |
 |------|--------------------|----------|-------------|
-| **Patient** | `1231231234` | `patient123` | Standard patient account. |
-| **Doctor** | `2223334445` | `doctor123` | Cardiologist account (Dr. Arben Gashi). |
-| **Staff** | `5556667778` | `staff123` | Main Nurse/Admin account (Agnesa Kelmendi). |
+| **Patient** | `1111111111` | `Patient1!` | Patient Account (Liridon Krasniqi). |
+| **Doctor** | `2222222222` | `Doctor1!` | Cardiologist Account (Dr. Venera Mustafa). |
+| **Staff** | `3333333333` | `Staff12!` | Admin/Staff Account (Fatmir Sejdiu). |
 
 > **Note**: Data is stored in your browser's Local Storage. clearing your cache will reset the "database" to its default state (as defined in `js/auth.js`).
 

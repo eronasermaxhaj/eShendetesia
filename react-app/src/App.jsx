@@ -56,10 +56,25 @@ function App() {
     return (
         <div className="container">
             {/* Header Section with personalized greeting */}
-            <h1>
-                🩺 Gjurmuesi i Simptomave
-                {currentUser && <div style={{ fontSize: '0.5em', color: '#718096', marginTop: '5px' }}>Pacienti: {currentUser.name}</div>}
-            </h1>
+            {/* Header Section with personalized greeting */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+                <h1 style={{ margin: 0 }}>
+                    🩺 Gjurmuesi
+                    {currentUser && <div style={{ fontSize: '0.5em', color: '#718096', marginTop: '5px' }}>Pacienti: {currentUser.name}</div>}
+                </h1>
+                <a href="../patient-dashboard.html" style={{
+                    textDecoration: 'none',
+                    color: '#05468c',
+                    fontWeight: 'bold',
+                    fontSize: '16px',
+                    padding: '8px 16px',
+                    backgroundColor: '#e2eef8',
+                    borderRadius: '6px',
+                    border: '1px solid #cbdcf0'
+                }}>
+                    ⬅ Kthehu në Ballinë
+                </a>
+            </div>
 
             {/* Input Component */}
             <SymptomForm onAddSymptom={addSymptom} />

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Data</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f7f9;
+            margin: 0;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #718096;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: #e53e3e;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #c53030;
+        }
+
+        .success {
+            color: #38a169;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>Reset Application Data</h1>
+        <p>This will clear all registered users, appointments, and settings.<br>Default users will be
+            restored.</p>
+        <button class="btn" onclick="resetSystem()">Confirm Reset</button>
+        <p id="msg" class="success">Data cleared successfully! Redirecting...</p>
+    </div>
+
+    <script>
+        function resetSystem() {
+            localStorage.clear();
+            document.getElementById('msg').style.display = 'block';
+            setTimeout(() => {
+                // Redirect to login page relative to this file
+                window.location.href = 'auth/login.html';
+            }, 1500);
+        }
+    </script>
+</body>
+
+</html>
