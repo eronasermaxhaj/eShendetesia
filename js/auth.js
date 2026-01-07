@@ -44,7 +44,7 @@ const AuthService = {
                     password: "Staff12!",
                     role: "staff",
                     name: "Fatmir Sejdiu",
-                    position: "Infermiere Kryesore",
+                    position: "Staf Kryesore",
                     email: "fatmir.sejdiu@spitali.ks"
                 }
             ];
